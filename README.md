@@ -103,7 +103,7 @@ A minimal agent with just `name` and `description` gets everything, same as `gen
 
 When frontmatter omits `tools` and the agent type carries no explicit registered-tools set, `loadToolsImplicitly` (config, default ON) decides: ON delegates tool setup to pi, so your `defaultTools` setting applies exactly as in a normal session, and tools left inactive stay registered for dispatcher tools to call by name. OFF starts such agents with no tools. Explicit frontmatter always wins.
 
-`tools` and `exclude_tools` accept built-in names (`read`, `bash`, `edit`, `write`, `grep`) and extension tool names (`web_search`). Use `tavily/*` or `tavily/all` in either list to include or exclude all tools from that extension. Excluding tools doesn't prevent the extension from loading; use `exclude_extensions: [tavily]` to prevent loading.
+`tools` and `exclude_tools` accept built-in names (`read`, `bash`, `powershell`, `edit`, `write`, `grep`) and extension tool names (`web_search`). Use `tavily/*` or `tavily/all` in either list to include or exclude all tools from that extension. Excluding tools doesn't prevent the extension from loading; use `exclude_extensions: [tavily]` to prevent loading.
 
 `loadSkillsImplicitly`, `loadExtensionsImplicitly`, and `loadToolsImplicitly` (config, default ON) decide what an agent gets when frontmatter omits `skills`, `extensions`, or the tool fields. Turn one OFF to default new agents to nothing on that axis and opt in explicitly.
 

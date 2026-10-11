@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Default agents pick the shell tool that actually works on Windows.** The embedded Explore agent registered a hardcoded `bash` tool, which on Windows machines without Git Bash resolves to the `C:\Windows\System32\bash.exe` WSL launcher stub — every command fails with WSL relay errors and the model retries in a loop (the repeated `bash("echo hello")` symptom). The read-only tool set now resolves at load: `bash` when a usable bash exists (or on non-Windows), `powershell` otherwise, and the Explore system prompt names the resolved tool with shell-appropriate read-only examples. All subagent system prompts also gain a `Shell tool:` env line when the fallback is active, so custom agents never reach for the missing bash. `powershell` is now recognized in `BUILTIN_TOOL_NAMES` for frontmatter validation, and `summarizeToolArgs`/activity display treat it like `bash`.
+
 ## [1.16.0] - 2026-10-05
 
 ### Added
